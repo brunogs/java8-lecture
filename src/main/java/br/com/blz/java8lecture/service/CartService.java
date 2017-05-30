@@ -19,7 +19,7 @@ public class CartService {
 
     public Optional<Cart> getCartByCustomer(Customer customer) {
         return cartsDataSet.stream()
-                .filter(cart -> Optional.of(customer).equals(cart.getCustomer()))
+                .filter(cart -> cart.isFromCustomer(customer))
                 .findFirst();
     }
 

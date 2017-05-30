@@ -32,4 +32,10 @@ public class Cart {
                 .filter(item -> item.getProduct().equals(product))
                 .findAny();
     }
+
+    public boolean isFromCustomer(Customer customer) {
+        return getCustomer()
+                .filter(c -> c.equals(customer))
+                .isPresent();
+    }
 }
