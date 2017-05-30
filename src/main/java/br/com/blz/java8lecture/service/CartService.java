@@ -13,6 +13,10 @@ public class CartService {
 
     Set<Cart> cartsDataSet = new HashSet<>();
 
+    public CartService(Set<Cart> cartsDataSet) {
+        this.cartsDataSet = cartsDataSet;
+    }
+
     public Optional<Cart> getCartByCustomer(Customer customer) {
         return cartsDataSet.stream()
                 .filter(cart -> Optional.of(customer).equals(cart.getCustomer()))
@@ -25,10 +29,8 @@ public class CartService {
 
     public void addItemToCart(Customer customer, CartItem cartItem) {
         getCartByCustomer(customer)
-                .map(cart -> {
-                    cart.addItem(cartItem);
-                    return cart;
-                }).orElseThrow(IllegalStateException::new);
+                .map(cart -> cart.addItem(cartItem))
+                .orElseThrow(IllegalStateException::new);
     }
 
     public boolean hasItemInCart(Customer customer, CartItem cartItem) {

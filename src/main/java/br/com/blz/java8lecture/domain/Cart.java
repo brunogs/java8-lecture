@@ -18,8 +18,9 @@ public class Cart {
         return Optional.ofNullable(customer);
     }
 
-    public void addItem(CartItem cartItem) {
+    public Cart addItem(CartItem cartItem) {
         items.add(cartItem);
+        return this;
     }
 
     public boolean contains(CartItem cartItem) {
