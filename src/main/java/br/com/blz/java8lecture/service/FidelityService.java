@@ -2,14 +2,17 @@ package br.com.blz.java8lecture.service;
 
 import br.com.blz.java8lecture.domain.Order;
 import br.com.blz.java8lecture.domain.State;
-import br.com.blz.java8lecture.memoizer.Memoizer;
 
+import java.math.BigDecimal;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static br.com.blz.java8lecture.domain.State.SP;
+import static java.lang.Boolean.FALSE;
 
-public class FidelityService {
+public class FidelityService implements Service {
+
+    private static final BigDecimal FIDELITY_MINIMUM_TOTAL = new BigDecimal("99.00");
 
     public void evaluateFidelityForOrders(Stream<Order> orders) {
 
@@ -17,15 +20,26 @@ public class FidelityService {
         Stream<Order> ordersOutSP = orders.filter(this::isOutSP);
 
         // 2 -> Somente compras com valor acima de R$ 99
+        Function<Order, Boolean> fnPrice = this::validateFidelityPrice;
+        Stream<Order> ordersWithValidTotal = ordersOutSP.filter(fnPrice::apply);
+
+        // 3 -> Data limite
 
     }
 
     Boolean isOutSP(Order order) {
+        Function<State, Boolean> fnIsOutSPMemoized = memo(state -> state != SP);
 
-        Function<State, Boolean> isOutSP = state -> state != SP;
+        return fnIsOutSPMemoized.apply(order.getCustomer().getAddress().getState());
+    }
 
-        Function<State, Boolean> isOutSPMemoized = Memoizer.memoize(isOutSP);
+    Boolean validateFidelityPrice(Order order) {
 
-        return isOutSPMemoized.apply(order.getCustomer().getAddress().getState());
+        Function<BigDecimal, Boolean> fnFidelityPrice = memo(total -> total.compareTo(FIDELITY_MINIMUM_TOTAL) > 0);
+
+        if (order.getCart().getTotal().isPresent())
+            return fnFidelityPrice.apply(order.getCart().getTotal().get());
+
+        return FALSE;
     }
 }
