@@ -6,7 +6,7 @@ import com.google.common.base.Stopwatch;
 
 import java.util.List;
 
-public class StreamVersion {
+public class ChainOperationsStream {
 
     public static void main(String[] args) {
 

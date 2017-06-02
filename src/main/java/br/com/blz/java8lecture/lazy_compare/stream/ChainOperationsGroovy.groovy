@@ -4,7 +4,7 @@ import br.com.blz.java8lecture.domain.Order
 import com.google.common.base.Stopwatch
 
 
-class GroovyVersion {
+class ChainOperationsGroovy {
 
     static void main(String[] args) {
         List<Order> orders = Datasets.orders(1_000_000)
