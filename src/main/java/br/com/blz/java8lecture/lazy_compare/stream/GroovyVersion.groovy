@@ -13,9 +13,10 @@ class GroovyVersion {
 
         boolean customerIsPresent = orders
                 .findAll { it.id > 20 }
+                .findAll { it.id % 2 == 0 }
                 .collect { it.customer }
                 .findAll { it.name }
-                .take(500)
+                .take(50)
                 .any { it.name == "customer30" }
 
         stopwatch.stop()

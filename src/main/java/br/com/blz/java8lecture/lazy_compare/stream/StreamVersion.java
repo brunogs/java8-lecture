@@ -17,9 +17,10 @@ public class StreamVersion {
 
         boolean customerIsPresent = orders.stream()
                 .filter(o -> o.getId() > 20)
+                .filter(o -> o.getId() % 2 == 0)
                 .map(Order::getCustomer)
                 .filter(c -> c.getName() != null)
-                .limit(500)
+                .limit(50)
                 .anyMatch(c -> c.getName().equals("customer30"));
 
         stopwatch.stop();
