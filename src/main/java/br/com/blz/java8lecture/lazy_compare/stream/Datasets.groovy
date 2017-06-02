@@ -1,4 +1,4 @@
-package br.com.blz.java8lecture.stream_compare
+package br.com.blz.java8lecture.lazy_compare.stream
 
 import br.com.blz.java8lecture.domain.Cart
 import br.com.blz.java8lecture.domain.Customer
