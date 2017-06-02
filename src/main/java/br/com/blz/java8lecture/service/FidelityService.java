@@ -5,6 +5,7 @@ import br.com.blz.java8lecture.domain.State;
 
 import java.math.BigDecimal;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import static br.com.blz.java8lecture.domain.State.SP;
@@ -20,11 +21,8 @@ public class FidelityService implements Service {
         Stream<Order> ordersOutSP = orders.filter(this::isOutSP);
 
         // 2 -> Somente compras com valor acima de R$ 99
-        Function<Order, Boolean> fnPrice = this::validateFidelityPrice;
-        Stream<Order> ordersWithValidTotal = ordersOutSP.filter(fnPrice::apply);
-
-        // 3 -> Data limite
-
+        Predicate<Order> fnPrice = this::validateFidelityPrice;
+        Stream<Order> ordersWithValidTotal = ordersOutSP.filter(fnPrice);
     }
 
     Boolean isOutSP(Order order) {
