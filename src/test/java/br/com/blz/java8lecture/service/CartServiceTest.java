@@ -1,25 +1,24 @@
 package br.com.blz.java8lecture.service;
 
+import br.com.blz.java8lecture.domain.Address;
 import br.com.blz.java8lecture.domain.Cart;
 import br.com.blz.java8lecture.domain.Customer;
 import com.google.common.collect.Sets;
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import java.util.Optional;
 
+import static br.com.blz.java8lecture.domain.State.SP;
 import static com.github.npathai.hamcrestopt.OptionalMatchers.isEmpty;
 import static com.github.npathai.hamcrestopt.OptionalMatchers.isPresent;
 import static java.util.Collections.emptySet;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 
 public class CartServiceTest {
 
     private CartService cartService;
-    private Customer johnCustomer = new Customer("john");
+    private Customer johnCustomer = new Customer("john", new Address(SP));
 
     @Test
     public void should_not_found_cart() throws Exception {
