@@ -6,13 +6,20 @@ import br.com.blz.java8lecture.domain.Customer
 import br.com.blz.java8lecture.domain.Order
 import br.com.blz.java8lecture.domain.State
 
+import static br.com.blz.java8lecture.domain.State.RS
+import static br.com.blz.java8lecture.domain.State.SP
+
 class OrderDatasets {
 
     static List<Order> orders(long maxOrders) {
         Random random = new Random()
         (1..maxOrders).collect {
             int customerId = random.nextInt(50) + 1
-            Customer customer = new Customer("customer$customerId", null)
+            Customer customer
+            if (it % 2 == 0)
+                customer = new Customer("customer$customerId", new Address(RS))
+            else
+                customer = new Customer("customer$customerId", new Address(SP))
             Cart cart = new Cart(customer)
             new Order(it.intValue(), customer, cart, BigDecimal.valueOf(it))
         }

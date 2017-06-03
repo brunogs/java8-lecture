@@ -28,6 +28,10 @@ public class Cart {
         return this;
     }
 
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
     public Optional<BigDecimal> getTotal() {
         return Optional.of(this.total);
     }

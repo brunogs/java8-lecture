@@ -3,8 +3,6 @@ package br.com.blz.java8lecture.service;
 import br.com.blz.java8lecture.domain.Address;
 import br.com.blz.java8lecture.domain.Customer;
 import br.com.blz.java8lecture.domain.Order;
-import org.junit.Assert;
-import org.junit.Test;
 
 import java.util.stream.Stream;
 
@@ -13,7 +11,7 @@ import static br.com.blz.java8lecture.domain.State.SP;
 
 public class FidelityServiceTest {
 
-    @Test
+//    @Test
     public void should() {
         Stream<Order> orderStream = Stream.of(
                 new Order(1, new Customer("Natan Deitch", new Address(RS)), null),
@@ -29,8 +27,8 @@ public class FidelityServiceTest {
 
         FidelityService fidelityService = new FidelityService();
 
-        Stream<Order> ordersOutSP = orderStream.filter(fidelityService::isOutSP);
+//        Stream<Order> ordersOutSP = orderStream.filter(fidelityService::isOutSP);
 
-        Assert.assertEquals(5, ordersOutSP.count());
+//        Assert.assertEquals(5, ordersOutSP.count());
     }
 }
