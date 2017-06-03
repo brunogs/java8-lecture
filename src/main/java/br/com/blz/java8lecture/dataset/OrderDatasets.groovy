@@ -9,10 +9,12 @@ import br.com.blz.java8lecture.domain.State
 class OrderDatasets {
 
     static List<Order> orders(long maxOrders) {
+        Random random = new Random()
         (1..maxOrders).collect {
-            Customer customer = new Customer("customer$it", null)
+            int customerId = random.nextInt(50) + 1
+            Customer customer = new Customer("customer$customerId", null)
             Cart cart = new Cart(customer)
-            new Order(it.intValue(), customer, cart)
+            new Order(it.intValue(), customer, cart, BigDecimal.valueOf(it))
         }
     }
 
