@@ -35,9 +35,8 @@ public class FidelityService implements Service {
 
         Function<BigDecimal, Boolean> fnFidelityPrice = memo(total -> total.compareTo(FIDELITY_MINIMUM_TOTAL) > 0);
 
-        if (order.getCart().getTotal().isPresent())
-            return fnFidelityPrice.apply(order.getCart().getTotal().get());
-
-        return FALSE;
+        return order.getCart().getTotal()
+                .map(fnFidelityPrice)
+                .orElse(FALSE);
     }
 }
