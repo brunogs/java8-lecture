@@ -1,8 +1,10 @@
 package br.com.blz.java8lecture.lazy_compare.optional;
 
 
+import br.com.blz.java8lecture.domain.Address;
 import br.com.blz.java8lecture.domain.Cart;
 import br.com.blz.java8lecture.domain.Customer;
+import br.com.blz.java8lecture.domain.State;
 import br.com.blz.java8lecture.service.CartService;
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.Sets;
@@ -12,7 +14,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class OptionalLazyVersion {
 
     public static void main(String[] args) {
-        Customer johnCustomer = new Customer("john");
+        Customer johnCustomer = new Customer("john", new Address(State.SP));
         CartService cartService = new CartService(Sets.newHashSet(new Cart(johnCustomer)));
 
         Stopwatch stopwatch = Stopwatch.createStarted();

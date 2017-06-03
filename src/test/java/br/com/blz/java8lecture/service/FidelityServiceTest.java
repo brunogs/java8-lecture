@@ -16,16 +16,16 @@ public class FidelityServiceTest {
     @Test
     public void should() {
         Stream<Order> orderStream = Stream.of(
-                new Order(new Customer("Natan Deitch", new Address(RS)), null),
-                new Order(new Customer("Natan Deitch", new Address(RS)), null),
-                new Order(new Customer("Natan Deitch", new Address(RS)), null),
-                new Order(new Customer("Natan Deitch", new Address(RS)), null),
-                new Order(new Customer("Natan Deitch", new Address(RS)), null),
-                new Order(new Customer("Bruno Gomes", new Address(SP)), null),
-                new Order(new Customer("Bruno Gomes", new Address(SP)), null),
-                new Order(new Customer("Bruno Gomes", new Address(SP)), null),
-                new Order(new Customer("Bruno Gomes", new Address(SP)), null),
-                new Order(new Customer("Bruno Gomes", new Address(SP)), null));
+                new Order(1, new Customer("Natan Deitch", new Address(RS)), null),
+                new Order(2, new Customer("Natan Deitch", new Address(RS)), null),
+                new Order(3, new Customer("Natan Deitch", new Address(RS)), null),
+                new Order(4, new Customer("Natan Deitch", new Address(RS)), null),
+                new Order(5, new Customer("Natan Deitch", new Address(RS)), null),
+                new Order(6, new Customer("Bruno Gomes", new Address(SP)), null),
+                new Order(7, new Customer("Bruno Gomes", new Address(SP)), null),
+                new Order(8, new Customer("Bruno Gomes", new Address(SP)), null),
+                new Order(9, new Customer("Bruno Gomes", new Address(SP)), null),
+                new Order(10, new Customer("Bruno Gomes", new Address(SP)), null));
 
         FidelityService fidelityService = new FidelityService();
 
