@@ -18,4 +18,19 @@ public class Streams {
         String sentence = "JavaScript é lento";
         Stream<String> wordStream = Pattern.compile("\\W").splitAsStream(sentence);
     }
+
+    /*
+    forEach
+    toArray
+    reduce
+    collect
+    min
+    max
+    count
+    anymatch
+    allMatch
+    noneMatch
+    findFirst
+    findAny
+     */
 }
