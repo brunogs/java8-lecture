@@ -1,6 +1,5 @@
 package br.com.blz.java8lecture.collectors;
 
-import br.com.blz.java8lecture.dataset.OrderDatasets;
 import br.com.blz.java8lecture.domain.Order;
 
 import java.util.ArrayList;
@@ -17,12 +16,10 @@ import static br.com.blz.java8lecture.service.FidelityService.isDifal;
 import static com.google.common.collect.Sets.immutableEnumSet;
 import static java.util.stream.Collector.Characteristics.UNORDERED;
 
-public class DifalCollector implements Collector<Order, List<Order>, List<Order>> {
+public class BlzCollectors implements Collector<Order, List<Order>, List<Order>> {
 
-    public static void main(String[] args) {
-        List<Order> orders = OrderDatasets.orders(150).stream().collect(new DifalCollector());
-
-        orders.forEach(order -> System.out.printf("Order State: %s\nOrder Total: %s", order.getCustomer().getAddress().getState(), order.getCart().getTotal()));
+    public static BlzCollectors toDifal() {
+        return new BlzCollectors();
     }
 
     @Override
