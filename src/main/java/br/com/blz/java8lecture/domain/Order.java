@@ -25,6 +25,7 @@ public class Order {
         this.id = id;
         this.customer = customer;
         this.cart = cart;
+        this.cart.setTotal(total);
         this.total = total;
     }
 }
