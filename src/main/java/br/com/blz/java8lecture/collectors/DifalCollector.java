@@ -16,10 +16,10 @@ import static br.com.blz.java8lecture.service.FidelityService.isDifal;
 import static com.google.common.collect.Sets.immutableEnumSet;
 import static java.util.stream.Collector.Characteristics.UNORDERED;
 
-public class BlzCollectors implements Collector<Order, List<Order>, List<Order>> {
+public class DifalCollector implements Collector<Order, List<Order>, List<Order>> {
 
-    public static BlzCollectors toDifal() {
-        return new BlzCollectors();
+    public static DifalCollector toDifal() {
+        return new DifalCollector();
     }
 
     @Override

@@ -5,7 +5,7 @@ import br.com.blz.java8lecture.domain.Order;
 
 import java.util.List;
 
-import static br.com.blz.java8lecture.collectors.BlzCollectors.toDifal;
+import static br.com.blz.java8lecture.collectors.DifalCollector.toDifal;
 
 public class CustomCollector {
 
