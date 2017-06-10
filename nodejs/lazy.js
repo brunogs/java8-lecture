@@ -37,14 +37,62 @@ function chainOperations() {
     .some(x => x.name === 'customer30');
 }
 
-console.time('chain');
-console.log(chainOperations());
-console.timeEnd('chain');
+console.log('Filters batch 1')
+console.time('NodeJS lazy.js ');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js ');
 
-console.time('chain2');
-console.log(chainOperations());
-console.timeEnd('chain2');
+console.time('NodeJS lazy.js 2');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js 2');
 
-console.time('chain3');
-console.log(chainOperations());
-console.timeEnd('chain3');
+console.time('NodeJS lazy.js 3');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js 3');
+console.log('\n\n')
+
+
+console.log('Filters batch 2')
+console.time('NodeJS lazy.js ');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js ');
+
+console.time('NodeJS lazy.js 2');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js 2');
+
+console.time('NodeJS lazy.js 3');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js 3');
+console.log('\n\n')
+
+
+console.log('Filters batch 3')
+console.time('NodeJS lazy.js ');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js ');
+
+console.time('NodeJS lazy.js 2');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js 2');
+
+console.time('NodeJS lazy.js 3');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js 3');
+console.log('\n\n')
+
+
+
+console.log('Filters batch 4')
+console.time('NodeJS lazy.js ');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js ');
+
+console.time('NodeJS lazy.js 2');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js 2');
+
+console.time('NodeJS lazy.js 3');
+console.log('is present: ' + chainOperations());
+console.timeEnd('NodeJS lazy.js 3');
+console.log('\n\n')
