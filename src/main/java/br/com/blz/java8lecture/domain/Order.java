@@ -1,10 +1,12 @@
 package br.com.blz.java8lecture.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 
 @Data
+@EqualsAndHashCode(of = {"id", "customer"})
 public class Order {
 
     private int id;

@@ -1,8 +1,10 @@
 package br.com.blz.java8lecture.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(of = "name")
 public class Customer {
 
     private String name;
