@@ -1,43 +1,59 @@
 package br.com.blz.java8lecture.lazy_compare.stream;
 
 
-import br.com.blz.java8lecture.dataset.OrderDatasets;
-import br.com.blz.java8lecture.domain.Order;
 import com.google.common.base.Stopwatch;
 
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Random;
+
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.IntStream.range;
 
 public class ChainOperationsStream {
 
-    public static void main(String[] args) {
-
-        Set<Order> orders = new HashSet<>(OrderDatasets.orders(1_000_000));
-
-        applyFilters(orders);
-
-        System.out.println(".... ");
-
-        applyFilters(orders);
-
-        System.out.println(".... ");
-
-        applyFilters(orders);
+    static List<Order> orders(int maxOrders) {
+        Random random = new Random();
+        return range(1, maxOrders).boxed()
+                .map(orderId -> {
+                    int customerId = random.nextInt(50) + 1;
+                    Customer customer = new Customer("customer" + customerId);
+                    return new Order(orderId, customer);
+                }).collect(toList());
 
     }
 
-    private static void applyFilters(Set<Order> orders) {
+    public static void main(String[] args) {
+
+        List<Order> orders = orders(1_000_000);
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println("\n\nFilters batch " + i);
+
+            applyFilters(orders);
+
+            System.out.println(".... ");
+
+            applyFilters(orders);
+
+            System.out.println(".... ");
+
+            applyFilters(orders);
+
+        }
+
+    }
+
+    private static void applyFilters(Collection<Order> orders) {
         Stopwatch stopwatch = Stopwatch.createStarted();
 
         boolean customerIsPresent = orders.stream()
-                .filter(o -> o.getId() > 20)
-                .filter(o -> o.getId() % 2 == 0)
-                .map(Order::getCustomer)
-                .filter(c -> c.getName() != null)
+                .filter(o -> o.id > 20)
+                .filter(o -> o.id % 2 == 0)
+                .map(o -> o.customer)
+                .filter(c -> c.name != null)
                 .limit(50)
-                .anyMatch(c -> c.getName().equals("customer30"));
+                .anyMatch(c -> c.name.equals("customer30"));
 
         stopwatch.stop();
 
